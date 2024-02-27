@@ -1,0 +1,117 @@
+/* make all font roboto */
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+/* positioning everything */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /*vh = maximum screen size height so the dimensions of what you're seeing*/
+    background: gray;
+}
+
+/* wheel base */
+.container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* circle of pointer */
+.container .pointer {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* pointer */
+.container .pointer::before {
+    content: '';
+    position: absolute;
+    top: -28px;
+    left: 20px;
+    width: 20px;
+    height: 30px;
+    background: white;
+    clip-path: polygon(50% 0%, 15% 100%, 85% 100%);
+}
+
+/* wheel */
+.container .wheel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 10px white;
+    transition: transform 3s ease-out;
+}
+
+/* the options */
+/* duplicate each option piece and rotate it by 45deg around the center of the wheel */
+.container .wheel .option {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: var(--clr);
+    transform-origin: bottom right;
+    transform: rotate(calc(45deg * var(--i)));
+    clip-path: polygon(0 0, 56% 0, 100% 100%, 0 56%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* the options text */
+/* duplicate each option text and rotate it by 45deg around the center of the wheel */
+.container .wheel .option span {
+    position: relative;
+    transform: rotate(45deg);
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-weight: 600;
+    font-style: normal;
+    position: absolute;
+    top: 1px;
+}
+
+.button{
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    right:0;
+    bottom:0;
+    width: 100px;
+    height: 50px;
+    background-color: white;
+    transition-duration: 0.3s;
+}
+
+.button:hover {
+    background-color: #C0C0C0
+}
+
+img {
+  position: fixed;
+  z-index: -1;
+  opacity: 0.3;
+}
